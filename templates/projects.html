@@ -1,0 +1,9 @@
+<!-- templates/projects.html -->
+<div class="projects-section fade-in">
+    <h1>My Projects</h1>
+    <div class="projects-container">
+        {% for project in projects %}
+            {% include 'partials/project_card.html' %}
+        {% endfor %}
+    </div>
+</div>
