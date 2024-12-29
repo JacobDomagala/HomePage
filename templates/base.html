@@ -3,44 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jacob Domagala</title>
-    <!-- Include Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
-    <!-- Link to CSS -->
-    <link rel="stylesheet" href="/static/css/styles.css">
-    <!-- Include HTMX -->
-    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    <title>Jacob Domagala - Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Add other head elements like meta tags, favicon, etc. -->
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="/" hx-get="/" hx-target="#content" hx-swap="innerHTML">About Me</a></li>
-            <li><a href="/projects" hx-get="/projects" hx-target="#content" hx-swap="innerHTML">Projects</a></li>
-            <li><button id="theme-toggle">Toggle Dark Mode</button></li>
-        </ul>
-    </nav>
+    <!-- Include Navbar Partial -->
+    {% include 'partials/navbar.html' %}
 
-    <!-- Main Content Area -->
-    <div id="content" class="fade-in">
-        {% block content %}{% endblock %}
-    </div>
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Child templates will inject content here -->
+        {% endblock %}
+    </main>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <p>&copy; {{ current_year }} Jacob Domagala. All rights reserved.</p>
     </footer>
-
-    <!-- Theme Toggle Script -->
-    <script>
-        document.getElementById('theme-toggle').addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'light');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        });
-    </script>
 </body>
 </html>
