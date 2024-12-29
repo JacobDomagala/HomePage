@@ -2,16 +2,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="hero fade-in">
     <h1>About Me</h1>
     <p>Hello! I'm Jacob Domagala, a Software Engineer.</p>
-    <img src="/static/images/profile.jpg" alt="Profile Picture" class="profile-pic">
-    <h2>Skills</h2>
+    <h2>My area of intrests</h2>
     <ul class="skills-list">
-        <li>Skill One</li>
-        <li>Skill Two</li>
-        <li>Skill Three</li>
+        <li>Game Developement</li>
+        <li>Compiuter Graphics</li>
+        <li>iOS developement</li>
+        <li>AI</li>
         <!-- Add more skills as needed -->
     </ul>
+    <h2>
+        <ul class="contact-links">
+            <li><a href="https://github.com/JacobDomagala" target="_blank"><img src="/static/images/github.png" class="website-image"></a></li>
+            <li><a href="https://www.linkedin.com/in/jakub-domagala/" target="_blank"><img src="/static/images/linkedin.png" class="website-image"></a></li>
+            <li><a href="https://x.com/JacobDomagala" target="_blank"><img src="/static/images/x.png" class="website-image"></a></li>
+            <!-- Add more links as needed -->
+        </ul>
+    </h2>
 </div>
+
 {% endblock %}
