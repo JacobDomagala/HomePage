@@ -2,14 +2,13 @@
 
 /* CSS Variables */
 :root {
-    --primary-color: #3498db;
+    --hover-color: #336CDD;
     --secondary-color: #2ecc71;
     --accent-color: #e6958c;
     --neutral-color: #2c3e50;
     --light-color: #ecf0f1;
     --background-color: #ffffff;
-    --font-primary: 'Outfit', sans-serif;
-    --font-secondary: 'Montserrat', sans-serif;
+    --font-primary: 'Outfit';
 }
 
 /* Reset and Base Styles */
@@ -21,7 +20,6 @@
 
 body {
     font-family: var(--font-primary);
-    line-height: 1.6;
     background-color: var(--background-color);
     color: var(--neutral-color);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -31,7 +29,7 @@ body {
 .container {
     max-width: 1440px; /* Sets the maximum width */
     margin: 0 auto; /* Centers the container */
-    padding: 0 20px; /* Adds horizontal padding for spacing */
+    padding-top: 101px;
 }
 
 /* Navbar Styles */
@@ -48,7 +46,6 @@ body {
     gap: 10px; /* Space between child elements */
     transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
     z-index: 1000; /* Ensures navbar stays above other elements */
-    width: Fixed (1,439px)px;
 
     padding-left: 485.5px;
     padding-top: 24px;
@@ -83,6 +80,10 @@ body {
     opacity: 1;
 }
 
+.nav-link:hover {
+    color: var(--hover-color)
+}
+
 /* Section Styles */
 section {
     padding: 100px 0 20px 0; /* Top padding accounts for fixed navbar height */
@@ -90,46 +91,90 @@ section {
 }
 
 #home { background-color: #f4f4f4; }
-#about { background-color: #e4e4e4; }
+#about { background-color: #f8f8f8; }
 #services { background-color: #d4d4d4; }
-#contact { background-color: #c4c4c4; }
+#contact { background-color: #f8f8f8; }
 
-/* Responsive Design */
-
-/* Adjust container width on smaller screens */
-@media (max-width: 1439px) {
-    .container {
-        width: 95%; /* Slightly wider on smaller screens */
-    }
+.title {
+    font-family: var(--font-primary);
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 74px;
+    text-align: center;
 }
 
-/* Tablet and Smaller Devices */
-@media (max-width: 768px) {
-    .nav-menu {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-link {
-        font-size: 16px;
-    }
-
-    .navbar {
-        height: 60px; /* Reduced navbar height on mobile */
-    }
-
-    section {
-        padding: 80px 20px 20px 20px; /* Adjust padding for smaller navbar */
-    }
+.hello {
+    width: 552px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    background-color: #ffffff;  
+    margin: 0 auto;
 }
 
-/* Very Small Devices */
-@media (max-width: 480px) {
-    .nav-menu {
-        gap: 5px;
-    }
+.hello .greeting{
+    width: 552px;
+    
+    font-family: var(--font-primary);
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 74px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
 
-    .nav-link {
-        font-size: 14px;
-    }
+
+.socials {
+    list-style: none; /* Removes default bullet points */
+    padding-top: 32px;
+    margin: 0;        /* Removes default margin */
+    
+    display: flex;    /* Enables Flexbox for horizontal alignment */
+    gap: 16px;        /* Adds space between circles */
+    
+    justify-content: center; /* Centers the circles horizontally within the container */
+    align-items: center;     /* Centers the circles vertically within the container */
+}
+
+.socials .circle {
+    width: 59px;                 /* Width of the circle */
+    height: 59px;                /* Height of the circle */
+    border: 2px solid #000;      /* Border color and thickness */
+    border-radius: 50%;          /* Makes the <li> a circle */
+    background-color: transparent; /* Ensures the circle is not filled */
+    
+    display: flex;               /* Enables Flexbox */
+    justify-content: center;     /* Centers the SVG horizontally */
+    align-items: center;         /* Centers the SVG vertically */
+    
+    /* Optional: Add hover effect */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.socials .circle:hover {
+    border-color: #2980b9;     /* Darker border on hover */
+}
+
+.socials .circle a:focus {
+    outline: 2px dashed var(--primary-color);
+    outline-offset: 4px;
+}
+
+/* SVG Icon Styling */
+.socials .circle .icon {
+    width: 24px;                  /* SVG size */
+    height: 24px;
+    color: #000;                  /* Default icon color */
+    transition: transform 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+/* Change icon color on hover */
+.socials .circle:hover .icon {
+    color: var(--hover-color);    /* Changes SVG color on hover */
+    transform: scale(1.1);         /* Slightly enlarge the icon on hover */
 }
