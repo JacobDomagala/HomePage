@@ -1,17 +1,210 @@
-<!-- templates/index.html -->
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="hero fade-in">
-    <h1>About Me</h1>
-    <p>Hello! I'm Jacob Domagala, a Software Engineer.</p>
-    <img src="/static/images/profile.jpg" alt="Profile Picture" class="profile-pic">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-        <li>Skill One</li>
-        <li>Skill Two</li>
-        <li>Skill Three</li>
-        <!-- Add more skills as needed -->
-    </ul>
-</div>
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>Jakub Domagała - Portfolio</title>
+    <!-- Google Fonts Import -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Meta Tag for Responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li>
+                <a href="#hello" class="nav-link">
+                    Hello!
+                </a>
+            </li>
+            <li>
+                <a href="#about" class="nav-link">
+                    About Me
+                </a>
+            </li>
+            <li>
+                <a href="#portfolio" class="nav-link">
+                    Portfolio
+                </a>
+            </li>
+            <li>
+                <a href="#contact" class="nav-link">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hello Section -->
+        <section id="hello">
+            <div class="hello">
+                <p class="greeting">
+                    Hello, I’m Jakub Domagała
+                    <img src="/static/images/hand.png" alt="waving hand">
+                </p>
+                <h1 class="title">
+                    Software Engineer
+                </h1>
+            </div>
+            <ul class="socials">
+                <li class="circle">
+                    <a href="https://github.com/JacobDomagala" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub">
+                        <svg class="icon" width="25" height="25" viewBox="0 0 25 25" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_98_167)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12.5 2C6.6995 2 2 6.695 2 12.4895C2 17.1245 5.009 21.0545 9.1805 22.442C9.7055 22.538 9.8975 22.214 9.8975 21.9365C9.8975 21.6875 9.8885 21.0275 9.8825 20.1515C6.962 20.786 6.347 18.746 6.347 18.746C5.8685 17.534 5.18 17.2115 5.18 17.2115C4.2275 16.5605 5.252 16.574 5.252 16.574C6.3065 16.649 6.8615 17.654 6.8615 17.654C7.7975 19.259 9.3185 18.794 9.917 18.527C10.0115 17.849 10.283 17.387 10.583 17.1245C8.252 16.8605 5.801 15.9605 5.801 11.9405C5.801 10.796 6.2105 9.8585 6.881 9.1265C6.773 8.861 6.413 7.7945 6.986 6.3515C6.986 6.3515 7.865 6.068 9.872 7.4255C10.7286 7.19213 11.6122 7.0731 12.5 7.0715C13.3925 7.076 14.291 7.1915 15.1295 7.4255C17.1335 6.068 18.014 6.35 18.014 6.35C18.587 7.7945 18.227 8.861 18.119 9.125C18.791 9.86 19.199 10.796 19.199 11.9405C19.199 15.9695 16.742 16.8575 14.4035 17.1155C14.78 17.4395 15.116 18.08 15.116 19.0595C15.116 20.4605 15.1025 21.5915 15.1025 21.9365C15.1025 22.217 15.293 22.5425 15.8255 22.4405C17.9141 21.7441 19.7307 20.4084 21.0183 18.6226C22.3058 16.8367 22.9991 14.6911 23 12.4895C22.9984 9.70618 21.8913 7.03747 19.9222 5.07035C17.9531 3.10323 15.2833 1.99881 12.5 2Z"
+                                    fill="currentColor" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_98_167">
+                                    <rect width="24" height="24" fill="white" transform="translate(0.5 0.5)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+                <li class="circle">
+                    <a href="https://www.linkedin.com/in/jakub-domagala/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn">
+                        <svg class="icon" width="25" height="25" viewBox="0 0 25 25" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_98_173)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M5.96116 24.8956V9.44722H0.826984V24.8955H5.96116V24.8956ZM3.39461 7.33878C5.18444 7.33878 6.29936 6.15153 6.29936 4.66911C6.26551 3.15373 5.18444 2 3.42817 2C1.67162 2.00005 0.523468 3.15378 0.523468 4.66916C0.523468 6.15158 1.63778 7.33883 3.36081 7.33883L3.39461 7.33878ZM8.80272 24.8956C8.80272 24.8956 8.87008 10.8967 8.80272 9.44727H13.9377V11.6876H13.9036C14.5788 10.6334 15.7952 9.0845 18.5649 9.0845C21.9438 9.0845 24.4765 11.2925 24.4765 16.0376V24.8956H19.3424V16.6312C19.3424 14.5546 18.5995 13.1375 16.741 13.1375C15.3228 13.1375 14.4777 14.0929 14.1065 15.0163C13.9707 15.345 13.9377 15.8067 13.9377 16.2684V24.8956H8.80272Z"
+                                    fill="currentColor" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_98_173">
+                                    <rect width="24" height="24" fill="white" transform="translate(0.5 0.5)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+                <li class="circle">
+                    <a href="https://www.youtube.com/@Jacob.Domagala" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube">
+                        <svg class="icon" width="25" height="25" viewBox="0 0 25 25" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_98_386)">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M10.0861 15.8027V8.75686C12.4768 9.88178 14.3283 11.0807 16.5181 12.2523C14.712 13.254 12.4768 14.5773 10.0861 15.8027ZM23.4092 5.51992C22.9968 4.9766 22.294 4.55368 21.5457 4.41367C19.3463 3.99601 5.62518 3.99482 3.42698 4.41367C2.82693 4.52615 2.2926 4.79805 1.8336 5.2205C-0.100435 7.01558 0.505599 16.642 0.971777 18.2014C1.16781 18.8763 1.42123 19.3631 1.74038 19.6826C2.15157 20.105 2.71456 20.3959 3.36123 20.5264C5.17215 20.9009 14.5016 21.1104 21.5074 20.5826C22.1529 20.4701 22.7243 20.1699 23.1749 19.7295C24.9631 17.9416 24.8412 7.77454 23.4092 5.51992Z"
+                                    fill="currentColor" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_98_386">
+                                    <rect width="24" height="24" fill="white" transform="translate(0 0.599243)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+                <li class="circle">
+                    <a href="https://x.com/JacobDomagala" target="_blank" rel="noopener noreferrer" aria-label="X">
+                        <svg class="icon" width="24" height="23" viewBox="0 0 24 23" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_98_422)">
+                                <path
+                                    d="M18.9014 0.599243H22.5813L14.5415 9.83429L24 22.4008H16.5938L10.7935 14.7791L4.15636 22.4008H0.473859L9.07331 12.523L0 0.599243H7.5937L12.837 7.56557L18.9014 0.599243ZM17.6097 20.187H19.649L6.48577 2.69682H4.29764L17.6097 20.187Z"
+                                    fill="currentColor" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_98_422">
+                                    <rect width="24" height="21.8015" fill="white" transform="translate(0 0.599243)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="about-me">
+                <div class="main">
+                    <div class="about-me-text">
+                        <p class="title">About Me</p>
+                        <p class="description">I am a Software Engineer with experience in the automotive, fintech, and
+                            high-performance computing (HPC)
+                            industries. I have worked on developing and maintaining software systems that enhance
+                            functionality
+                            and
+                            efficiency. Additionally, I have some background in computer graphics, contributing to the
+                            creation
+                            of
+                            user interfaces and visual components.</p>
+                    </div>
+                    <img src="/static/images/portrait.png" alt="my picture" class="image">
+                </div>
+                <div class="skills">
+                    <p class="subtitle">Skills</p>
+                    <ul class="list">
+                        <li><img src="/static/images/c++.png" alt="c++ logo" class="icon"></li>
+                        <li><img src="/static/images/python.png" alt="python logo" class="icon"></li>
+                        <li> <img src="/static/images/vulkan.png" alt="vulkan logo" class="icon"></li>
+                        <li><img src="/static/images/cmake.png" alt="cmake logo" class="icon"></li>
+                        <li><img src="/static/images/git.png" alt="git logo" class="icon"></li>
+                        <li><img src="/static/images/docker.png" alt="docker logo" class="icon"></li>
+                        <li><img src="/static/images/mpi.png" alt="mpi logo" class="icon"></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <p class="title">Portfolio</p>
+            <div class="projects-container">
+                <!-- Add your project items here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <p class="title">Get in Touch</p>
+            <!-- Add contact form or information here -->
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; {{ current_year }} Jakub Domagała. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Active Nav Link Handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 80; // Adjust offset as needed
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
