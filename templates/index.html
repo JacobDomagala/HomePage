@@ -1,27 +1,107 @@
-<!-- templates/index.html -->
-{% extends "base.html" %}
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Jacob Domagala - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-<div class="hero fade-in">
-    <h1>About Me</h1>
-    <p>Hello! I'm Jacob Domagala, a Software Engineer.</p>
-    <h2>My area of intrests</h2>
-    <ul class="skills-list">
-        <li>Game Developement</li>
-        <li>Compiuter Graphics</li>
-        <li>iOS developement</li>
-        <li>AI</li>
-        <!-- Add more skills as needed -->
-    </ul>
-    <h2>
-        <ul class="contact-links">
-            <li><a href="https://github.com/JacobDomagala" target="_blank"><img src="/static/images/github.png" class="socials-image"></a></li>
-            <li><a href="https://www.linkedin.com/in/jakub-domagala/" target="_blank"><img src="/static/images/linkedin.png" class="socials-image"></a></li>
-            <li><a href="https://x.com/JacobDomagala" target="_blank"><img src="/static/images/x.png" class="socials-image"></a></li>
-            <!-- Add more links as needed -->
-        </ul>
-    </h2>
-</div>
+<body>
+    <!-- Include Navbar Partial -->
+    <nav class="navbar">
+            <ul class="nav-menu">
+                <li>
+                    <a href="#About" class="nav-link">
+                        About Me
+                    </a>
+                </li>
+                <li>
+                    <a href="#Portfolio" class="nav-link">
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#Contact" class="nav-link">
+                        Contact
+                    </a>
+                </li>
 
-{% endblock %}
+            </ul>
+    </nav>
+
+    <div class="container">
+        <section id="About">
+            <h1>About Me</h1>
+            <p>I am a Software Engineer with experience in the automotive, fintech, and high-performance computing (HPC)
+                industries. I have worked on developing and maintaining software systems that enhance functionality and
+                efficiency. Additionally, I have some background in computer graphics, contributing to the creation of
+                user interfaces and visual components</p>
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>Game Developement</li>
+                <li>Compiuter Graphics</li>
+                <li>iOS developement</li>
+                <li>AI</li>
+                <!-- Add more skills as needed -->
+            </ul>
+            <!-- <h2>
+            <ul class="contact-links">
+                <li><a href="https://github.com/JacobDomagala" target="_blank"><img src="/static/images/github.png" class="socials-image"></a></li>
+                <li><a href="https://www.linkedin.com/in/jakub-domagala/" target="_blank"><img src="/static/images/linkedin.png" class="socials-image"></a></li>
+                <li><a href="https://x.com/JacobDomagala" target="_blank"><img src="/static/images/x.png" class="socials-image"></a></li>
+            </ul>
+        </h2> -->
+        </section>
+
+        <section id="Portfolio">
+            <h1>Portfolio</h1>
+            <div class="projects-container">
+
+            </div>
+        </section>
+
+        <section id="Contact">
+            <h1>Contact Me!</h1>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; {{ current_year }} Jacob Domagala. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('h2[id]');
+            const navLinks = {
+                about: document.getElementById('nav-about'),
+                contact: document.getElementById('nav-contact'),
+            };
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 60;
+                    if (pageYOffset >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                for (const key in navLinks) {
+                    if (navLinks.hasOwnProperty(key)) {
+                        if (current === key) {
+                            navLinks[key].classList.add('active');
+                        } else {
+                            navLinks[key].classList.remove('active');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

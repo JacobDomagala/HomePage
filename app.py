@@ -8,17 +8,6 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/projects')
-def projects():
-    # Example projects data
-    projects = [
-        {'id': 1, 'title': 'Looper', 'description': 'A brief description of Project One.', 'image': 'project1.jpg'},
-        {'id': 2, 'title': 'Shady', 'description': 'A brief description of Project Two.', 'image': 'project2.jpg'},
-        {'id': 3, 'title': 'Chefy', 'description': 'A brief description of Project Three.', 'image': 'project3.jpg'},
-        # Add more projects as needed
-    ]
-    return render_template('projects.html', projects=projects)
-
 # Project Detail Route
 @app.route('/projects/<int:project_id>')
 def project_detail(project_id):
