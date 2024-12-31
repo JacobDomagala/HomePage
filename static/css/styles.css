@@ -90,17 +90,20 @@ section {
     min-height: 100vh; /* Ensures each section takes up full viewport height */
 }
 
-#home { background-color: #f4f4f4; }
-#about { background-color: #f8f8f8; }
-#services { background-color: #d4d4d4; }
-#contact { background-color: #f8f8f8; }
-
 .title {
     font-family: var(--font-primary);
     font-size: 64px;
     font-weight: 700;
     line-height: 74px;
-    text-align: center;
+    text-align: left;
+}
+
+.subtitle {
+    font-family: var(--font-primary);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 50.4px;
+    text-align: left;
 }
 
 .hello {
@@ -177,4 +180,68 @@ section {
 .socials .circle:hover .icon {
     color: var(--hover-color);    /* Changes SVG color on hover */
     transform: scale(1.1);         /* Slightly enlarge the icon on hover */
+}
+
+.about-me{
+    width: 1132px;
+    min-height: 611px;
+    padding: 50px;
+    gap: 32px;
+    border-radius: 14px 0px 0px 0px;
+    background-color: #f8f8f8;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-me .main{
+    display: flex; 
+    flex-direction: row;
+}
+
+.about-me-text{
+    display: flex; 
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about-me .description{
+    width: 456px;
+    height: 216px;
+
+    font-family: var(--font-primary);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.about-me .skills {
+    display: flex; 
+    flex-direction: column;
+    gap: 32px;
+}
+
+.about-me .skills .list{
+    list-style: none;
+    display: flex;
+    gap: 32px;
+}
+
+.about-me .image{
+    width: 273.75px;
+    height: 273.75px;
+    position: relative;
+    top: 4px;
+    left: 220.85px;
+    gap: 0px;
+    border-radius: 70px 0px 0px 0px;
+    rotate: -16.05 deg;
+}
+
+.about-me .icon{
+    height: 80px;
+    width: auto;
 }
