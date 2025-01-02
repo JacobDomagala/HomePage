@@ -193,13 +193,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contact-form');
-            const formMessages = document.getElementById('form-messages');
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault(); // Prevent the default form submission
 
                 // Clear previous messages
-                formMessages.innerHTML = '';
                 document.getElementById('email-error').innerText = '';
                 document.getElementById('message-error').innerText = '';
 
