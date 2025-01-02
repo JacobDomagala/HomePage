@@ -262,7 +262,6 @@
                     .then(data => {
                         console.log("Response Data:", data); // Debugging
                         if (data.success) {
-                            formMessages.innerHTML = `<div class="success-message">${data.success}</div>`;
                             form.reset(); // Reset the form fields
                         } else if (data.errors) {
                             // Display server-side validation errors
@@ -275,7 +274,6 @@
                                 messageInput.classList.add('input-error');
                             }
                             if (data.errors.general) {
-                                formMessages.innerHTML = `<div class="error-message-general">${data.errors.general}</div>`;
                                 // Optionally, highlight both fields or specific ones
                                 emailInput.classList.add('input-error');
                                 messageInput.classList.add('input-error');
@@ -284,11 +282,6 @@
                     })
                     .catch(error => {
                         console.error('Fetch Error:', error);
-                        if (error.errors && error.errors.general) {
-                            formMessages.innerHTML = `<div class="error-message-general">${error.errors.general}</div>`;
-                        } else {
-                            formMessages.innerHTML = `<div class="error-message-general">An unexpected error occurred. Please try again later.</div>`;
-                        }
                     });
             });
 
