@@ -5,6 +5,7 @@
     --hover-color: #336CDD;
     --primary-color: #111C32;
     --background-color: #ffffff;
+    --error-color: #EB5757;
     --font-primary: 'Outfit';
 }
 
@@ -53,6 +54,7 @@ section {
     display: flex;
     /* Enables flex layout */
     align-items: center;
+    align-self: center;
     /* Vertically centers items */
     justify-content: center;
     /* Horizontally centers items within the container */
@@ -62,11 +64,6 @@ section {
     /* Smooth transitions */
     z-index: 1000;
     /* Ensures navbar stays above other elements */
-
-    padding-left: 485.5px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    padding-right: 485.5px;
 }
 
 /* Navigation Menu Styles */
@@ -277,6 +274,7 @@ section {
 }
 
 .about-me .skills .list {
+    height: 80px;
     list-style: none;
     display: flex;
     gap: 32px;
@@ -357,6 +355,7 @@ section {
     border-radius: 14px;
     padding: 50px;
     margin-top: 140px;
+    margin-bottom: 94px;
     display: flex;
     flex-direction: row;
 }
@@ -393,12 +392,18 @@ section {
     border-color: var(--hover-color);
 }
 
+.contact-form{
+    width: 456px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
 .contact-form input,
 .contact-form textarea {
-    width: 456px;
+    max-width: 456px;
     padding: 10px;
     gap: 10px;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     border-radius: 7px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -419,9 +424,27 @@ section {
 
 /* Error Message Styling */
 .error-message {
-    color: red;
-    margin-top: 10px;
-    font-weight: bold;
+    color: var(--error-color);
+    
+    font-family: Outfit;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 27px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+
+/* Input Field Error Styling */
+.input-error {
+    border: 2px solid;
+    border-color: var(--error-color);
+}
+
+/* Optional: Smooth transition for border color */
+.input-field {
+    transition: border-color 0.3s ease;
 }
 
 /* Optional: Style the form and messages as needed */
