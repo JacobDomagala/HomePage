@@ -34,6 +34,10 @@ body {
     padding-top: 101px;
 }
 
+section {
+    scroll-margin-top: 76px;
+}
+
 /* Navbar Styles */
 .navbar {
     position: fixed;
@@ -318,7 +322,7 @@ body {
     border-radius: 7px;
     border: 0px;
     background-color: var(--primary-color);
-   
+
     color: var(--background-color);
 }
 
