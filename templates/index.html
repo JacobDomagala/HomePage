@@ -156,7 +156,8 @@
                     soon!
                 </p>
 
-                <form id="contact-form" class="contact-form" method="POST" action="{{ url_for('handle_contact') }}" novalidate>
+                <form id="contact-form" class="contact-form" method="POST" action="{{ url_for('handle_contact') }}"
+                    novalidate>
                     <div class="form">
                         <label for="email">Email</label>
                         <input class="input-field" type="email" id="email" name="email" required>
@@ -176,74 +177,133 @@
 
                 <!-- Success/Error Messages -->
                 {% if success %}
-                    <div class="success-message">
-                        {{ success }}
-                    </div>
+                <div class="success-message">
+                    {{ success }}
+                </div>
                 {% endif %}
                 {% if error %}
-                    <div class="error-message">
-                        {{ error }}
-                    </div>
+                <div class="error-message">
+                    {{ error }}
+                </div>
                 {% endif %}
             </div>
             <img src="{{ url_for('static', filename='images/contact.svg') }}" alt="contact image">
         </section>
     </section>
 
+    <!-- JavaScript for AJAX Submission -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contact-form');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const emailError = document.getElementById('email-error');
+            const messageError = document.getElementById('message-error');
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault(); // Prevent the default form submission
+                console.log("Form submit event triggered"); // Debugging
 
-                // Clear previous messages
-                document.getElementById('email-error').innerText = '';
-                document.getElementById('message-error').innerText = '';
+                // Clear previous messages and error states
+                emailError.innerText = '';
+                messageError.innerText = '';
+                emailInput.classList.remove('input-error');
+                messageInput.classList.remove('input-error');
 
                 // Gather form data
                 const formData = {
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
+                    email: emailInput.value.trim(),
+                    message: messageInput.value.trim()
                 };
 
+                console.log("Form Data:", formData); // Debugging
+
+                // Client-side validation
+                let hasError = false;
+                if (!formData.email) {
+                    emailError.innerText = 'Email is required.';
+                    emailInput.classList.add('input-error');
+                    hasError = true;
+                } else if (!validateEmail(formData.email)) {
+                    emailError.innerText = 'Please enter a valid email address.';
+                    emailInput.classList.add('input-error');
+                    hasError = true;
+                }
+
+                if (!formData.message) {
+                    messageError.innerText = 'Message is required.';
+                    messageInput.classList.add('input-error');
+                    hasError = true;
+                }
+
+                if (hasError) {
+                    return; // Exit if there are validation errors
+                    console.log("Error:");
+                }
+
                 // Send the form data using Fetch API
-                fetch('{{ url_for("handle_contact") }}', {
+                fetch('/handle_contact', { // Using hard-coded action
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
+                        // 'X-CSRFToken': csrfToken // Uncomment if CSRF is enabled
                     },
                     body: JSON.stringify(formData)
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        formMessages.innerHTML = `<div class="success-message">${data.success}</div>`;
-                        form.reset(); // Reset the form fields
-                    } else if (data.errors) {
-                        // Display validation errors
-                        if (data.errors.email) {
-                            document.getElementById('email-error').innerText = data.errors.email;
+                    .then(response => {
+                        // Check if response is OK
+                        if (!response.ok) {
+                            return response.json().then(data => {
+                                throw data;
+                            });
                         }
-                        if (data.errors.message) {
-                            document.getElementById('message-error').innerText = data.errors.message;
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Response Data:", data); // Debugging
+                        if (data.success) {
+                            formMessages.innerHTML = `<div class="success-message">${data.success}</div>`;
+                            form.reset(); // Reset the form fields
+                        } else if (data.errors) {
+                            // Display server-side validation errors
+                            if (data.errors.email) {
+                                emailError.innerText = data.errors.email;
+                                emailInput.classList.add('input-error');
+                            }
+                            if (data.errors.message) {
+                                messageError.innerText = data.errors.message;
+                                messageInput.classList.add('input-error');
+                            }
+                            if (data.errors.general) {
+                                formMessages.innerHTML = `<div class="error-message-general">${data.errors.general}</div>`;
+                                // Optionally, highlight both fields or specific ones
+                                emailInput.classList.add('input-error');
+                                messageInput.classList.add('input-error');
+                            }
                         }
-                        if (data.errors.general) {
-                            formMessages.innerHTML = `<div class="error-message">${data.errors.general}</div>`;
+                    })
+                    .catch(error => {
+                        console.error('Fetch Error:', error);
+                        if (error.errors && error.errors.general) {
+                            formMessages.innerHTML = `<div class="error-message-general">${error.errors.general}</div>`;
+                        } else {
+                            formMessages.innerHTML = `<div class="error-message-general">An unexpected error occurred. Please try again later.</div>`;
                         }
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    formMessages.innerHTML = `<div class="error-message">An unexpected error occurred. Please try again later.</div>`;
-                });
+                    });
             });
+
+            // Helper function to validate email format
+            function validateEmail(email) {
+                // Simple email regex pattern
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email.toLowerCase());
+            }
         });
     </script>
 </body>
 
 <footer class="footer">
-    Copyright 2025 Jakub Domagala
+    Copyright 2025 Jakub Domagała and Iga Kowalczyk
 </footer>
 
 </html>

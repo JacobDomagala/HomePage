@@ -33,14 +33,13 @@ def handle_contact():
     if not message_content:
         errors['message'] = "Message is required."
 
-    print(f"Errors: {errors}")
     if errors:
         return jsonify({'errors': errors}), 400
 
     # Compose the email using SendGrid
     sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
     sg_mail = SendGridMail(
-        from_email='contact@yourdomain.com',  # Use a verified sender email
+        from_email=os.getenv('MAIL_ADDRESS'),
         to_emails=os.getenv('MAIL_RECIPIENT'),
         subject="New Contact Form Submission",
         plain_text_content=f"From: {email}\n\nMessage:\n{message_content}"
