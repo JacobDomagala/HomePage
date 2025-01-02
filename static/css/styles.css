@@ -108,7 +108,7 @@ section {
 
 .hello {
     width: 552px;
-    min-height: 150px;
+    height: 241px;
     display: flex;
     flex-direction: column;
     gap: 2px;
