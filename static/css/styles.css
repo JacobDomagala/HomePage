@@ -159,6 +159,11 @@ section {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+.socials .circle a{
+    width: 24px;
+    height: 24px;
+}
+
 .socials .circle:hover {
     border-color: #2980b9;     /* Darker border on hover */
 }
@@ -170,8 +175,6 @@ section {
 
 /* SVG Icon Styling */
 .socials .circle .icon {
-    width: 24px;                  /* SVG size */
-    height: 24px;
     color: #000;                  /* Default icon color */
     transition: transform 0.3s, color 0.3s; /* Smooth transitions */
 }
