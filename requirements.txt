@@ -1,2 +1,4 @@
 Flask
 gunicorn
+sendgrid
+email_validator
