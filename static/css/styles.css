@@ -3,10 +3,7 @@
 /* CSS Variables */
 :root {
     --hover-color: #336CDD;
-    --secondary-color: #2ecc71;
-    --accent-color: #e6958c;
-    --neutral-color: #2c3e50;
-    --light-color: #ecf0f1;
+    --primary-color: #111C32;
     --background-color: #ffffff;
     --font-primary: 'Outfit';
 }
@@ -27,25 +24,44 @@ body {
 
 /* Container Styles */
 .container {
-    max-width: 1440px; /* Sets the maximum width */
-    margin: 0 auto; /* Centers the container */
+    max-width: 1440px;
+    /* Sets the maximum width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    /* Centers the container */
     padding-top: 101px;
+}
+
+section {
+    scroll-margin-top: 76px;
 }
 
 /* Navbar Styles */
 .navbar {
-    position: fixed; /* Makes the navbar sticky */
+    position: fixed;
+    /* Makes the navbar sticky */
     top: 0;
     left: 0;
-    width: 100%; /* Full width */
-    height: 76px; /* Fixed height */
-    background-color: #F8F8F8; /* Background color */
-    display: flex; /* Enables flex layout */
-    align-items: center; /* Vertically centers items */
-    justify-content: center; /* Horizontally centers items within the container */
-    gap: 10px; /* Space between child elements */
-    transition: background-color 0.3s ease, padding 0.3s ease; /* Smooth transitions */
-    z-index: 1000; /* Ensures navbar stays above other elements */
+    width: 100%;
+    /* Full width */
+    height: 76px;
+    /* Fixed height */
+    background-color: #F8F8F8;
+    /* Background color */
+    display: flex;
+    /* Enables flex layout */
+    align-items: center;
+    /* Vertically centers items */
+    justify-content: center;
+    /* Horizontally centers items within the container */
+    gap: 10px;
+    /* Space between child elements */
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    /* Smooth transitions */
+    z-index: 1000;
+    /* Ensures navbar stays above other elements */
 
     padding-left: 485.5px;
     padding-top: 24px;
@@ -56,8 +72,10 @@ body {
 /* Navigation Menu Styles */
 .nav-menu {
     list-style: none;
-    display: flex; /* Horizontal layout */
-    gap: 77px; /* Space between list items */
+    display: flex;
+    /* Horizontal layout */
+    gap: 77px;
+    /* Space between list items */
 }
 
 /* Navigation Item */
@@ -68,26 +86,25 @@ body {
 
 /* Navigation Link Styles */
 .nav-link {
-    font-family: var(--font-primary); /* Ensure font is applied */
+    font-family: var(--font-primary);
+    /* Ensure font is applied */
     font-size: 20px;
     font-weight: 700;
     line-height: 25.2px;
     text-align: center;
-    text-decoration: none; /* Remove default underline */
-    position: relative; /* For pseudo-elements if needed */
-    color: #000; /* Example text color */
-    display: block; /* Ensures the link occupies the full width and height */
+    text-decoration: none;
+    /* Remove default underline */
+    position: relative;
+    /* For pseudo-elements if needed */
+    color: #000;
+    /* Example text color */
+    display: block;
+    /* Ensures the link occupies the full width and height */
     opacity: 1;
 }
 
 .nav-link:hover {
     color: var(--hover-color)
-}
-
-/* Section Styles */
-section {
-    padding: 100px 0 20px 0; /* Top padding accounts for fixed navbar height */
-    min-height: 100vh; /* Ensures each section takes up full viewport height */
 }
 
 .title {
@@ -96,6 +113,7 @@ section {
     font-weight: 700;
     line-height: 74px;
     text-align: left;
+    color: var(--primary-color);
 }
 
 .subtitle {
@@ -106,22 +124,42 @@ section {
     text-align: left;
 }
 
+.text {
+    font-family: var(--font-primary);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.button-text {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: var(--background-color);
+}
+
 .hello {
     width: 552px;
-    min-height: 150px;
+    height: 241px;
     display: flex;
     flex-direction: column;
     gap: 2px;
     justify-content: center;
     align-items: center;
-    opacity: 1;
-    background-color: #ffffff;  
-    margin: 0 auto;
+    background-color: #ffffff;
+    margin: 101px auto 204px auto;
 }
 
-.hello .greeting{
+.hello .greeting {
     width: 552px;
-    
+
     font-family: var(--font-primary);
     font-size: 34px;
     font-weight: 400;
@@ -133,34 +171,54 @@ section {
 
 
 .socials {
-    list-style: none; /* Removes default bullet points */
+    list-style: none;
+    /* Removes default bullet points */
     padding-top: 32px;
-    margin: 0;        /* Removes default margin */
-    
-    display: flex;    /* Enables Flexbox for horizontal alignment */
-    gap: 16px;        /* Adds space between circles */
-    
-    justify-content: center; /* Centers the circles horizontally within the container */
-    align-items: center;     /* Centers the circles vertically within the container */
+    margin: 0;
+    /* Removes default margin */
+
+    display: flex;
+    /* Enables Flexbox for horizontal alignment */
+    gap: 16px;
+    /* Adds space between circles */
+
+    justify-content: center;
+    /* Centers the circles horizontally within the container */
+    align-items: center;
+    /* Centers the circles vertically within the container */
 }
 
 .socials .circle {
-    width: 59px;                 /* Width of the circle */
-    height: 59px;                /* Height of the circle */
-    border: 2px solid #000;      /* Border color and thickness */
-    border-radius: 50%;          /* Makes the <li> a circle */
-    background-color: transparent; /* Ensures the circle is not filled */
-    
-    display: flex;               /* Enables Flexbox */
-    justify-content: center;     /* Centers the SVG horizontally */
-    align-items: center;         /* Centers the SVG vertically */
-    
+    width: 59px;
+    /* Width of the circle */
+    height: 59px;
+    /* Height of the circle */
+    border: 2px solid #000;
+    /* Border color and thickness */
+    border-radius: 50%;
+    /* Makes the <li> a circle */
+    background-color: transparent;
+    /* Ensures the circle is not filled */
+
+    display: flex;
+    /* Enables Flexbox */
+    justify-content: center;
+    /* Centers the SVG horizontally */
+    align-items: center;
+    /* Centers the SVG vertically */
+
     /* Optional: Add hover effect */
     transition: background-color 0.3s, border-color 0.3s;
 }
 
+.socials .circle a {
+    width: 24px;
+    height: 24px;
+}
+
 .socials .circle:hover {
-    border-color: #2980b9;     /* Darker border on hover */
+    border-color: #2980b9;
+    /* Darker border on hover */
 }
 
 .socials .circle a:focus {
@@ -170,78 +228,126 @@ section {
 
 /* SVG Icon Styling */
 .socials .circle .icon {
-    width: 24px;                  /* SVG size */
-    height: 24px;
-    color: #000;                  /* Default icon color */
-    transition: transform 0.3s, color 0.3s; /* Smooth transitions */
+    color: #000;
+    /* Default icon color */
+    transition: transform 0.3s, color 0.3s;
+    /* Smooth transitions */
 }
 
 /* Change icon color on hover */
 .socials .circle:hover .icon {
-    color: var(--hover-color);    /* Changes SVG color on hover */
-    transform: scale(1.1);         /* Slightly enlarge the icon on hover */
+    color: var(--hover-color);
+    /* Changes SVG color on hover */
+    transform: scale(1.1);
+    /* Slightly enlarge the icon on hover */
 }
 
-.about-me{
+.about-me {
     width: 1132px;
     min-height: 611px;
     padding: 50px;
     gap: 32px;
-    border-radius: 14px 0px 0px 0px;
+    border-radius: 14px 14px 14px 14px;
     background-color: #f8f8f8;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
-.about-me .main{
-    display: flex; 
+.about-me .main {
+    display: flex;
     flex-direction: row;
 }
 
-.about-me-text{
-    display: flex; 
+.about-me-text {
+    display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.about-me .description{
+.about-me .description {
     width: 456px;
     height: 216px;
-
-    font-family: var(--font-primary);
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 27px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
 }
 
 .about-me .skills {
-    display: flex; 
+    display: flex;
     flex-direction: column;
     gap: 32px;
 }
 
-.about-me .skills .list{
+.about-me .skills .list {
     list-style: none;
     display: flex;
     gap: 32px;
 }
 
-.about-me .image{
+.about-me .image {
     width: 273.75px;
     height: 273.75px;
     position: relative;
     top: 4px;
     left: 220.85px;
     gap: 0px;
-    border-radius: 70px 0px 0px 0px;
     rotate: -16.05 deg;
 }
 
-.about-me .icon{
+.about-me .icon {
     height: 80px;
     width: auto;
+}
+
+
+.portfolio {
+    width: 1132px;
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 140px;
+
+    padding: 50px;
+    gap: 32px;
+}
+
+.portfolio .project {
+    width: 1032px;
+    height: 472px;
+    display: flex;
+    flex-direction: row;
+}
+
+.portfolio .button {
+    width: 131px;
+    height: 53px;
+    border-radius: 7px;
+    border: 0px;
+    background-color: var(--primary-color);
+
+    color: var(--background-color);
+}
+
+.portfolio .button:hover {
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+.portfolio .description {
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+}
+
+.portfolio .right {
+    margin: auto 0px auto 120px;
+}
+
+.portfolio .left {
+    margin: auto 120px auto 0px;
+}
+
+.portfolio .image {
+    width: 456px;
+    height: 476px;
+    border-radius: 14px;
 }

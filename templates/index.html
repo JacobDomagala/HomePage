@@ -40,18 +40,18 @@
     </nav>
 
     <!-- Main Container -->
-    <div class="container">
+    <section class="container">
         <!-- Hello Section -->
-        <section id="hello">
-            <div class="hello">
-                <p class="greeting">
-                    Hello, I’m Jakub Domagała
-                    <img src="/static/images/hand.png" alt="waving hand">
-                </p>
-                <h1 class="title">
-                    Software Engineer
-                </h1>
-            </div>
+        <section id="hello" class="hello">
+
+            <p class="greeting">
+                Hello, I’m Jakub Domagała
+                <img src="/static/images/hand.svg" alt="waving hand">
+            </p>
+            <h1 class="title">
+                Software Engineer
+            </h1>
+
             <ul class="socials">
                 <li class="circle">
                     <a href="https://github.com/JacobDomagala" target="_blank" rel="noopener noreferrer"
@@ -128,43 +128,92 @@
         </section>
 
         <!-- About Section -->
-        <section id="about">
-            <div class="about-me">
-                <div class="main">
-                    <div class="about-me-text">
-                        <p class="title">About Me</p>
-                        <p class="description">I am a Software Engineer with experience in the automotive, fintech, and
-                            high-performance computing (HPC)
-                            industries. I have worked on developing and maintaining software systems that enhance
-                            functionality
-                            and
-                            efficiency. Additionally, I have some background in computer graphics, contributing to the
-                            creation
-                            of
-                            user interfaces and visual components.</p>
-                    </div>
-                    <img src="/static/images/portrait.png" alt="my picture" class="image">
-                </div>
-                <div class="skills">
-                    <p class="subtitle">Skills</p>
-                    <ul class="list">
-                        <li><img src="/static/images/c++.png" alt="c++ logo" class="icon"></li>
-                        <li><img src="/static/images/python.png" alt="python logo" class="icon"></li>
-                        <li> <img src="/static/images/vulkan.png" alt="vulkan logo" class="icon"></li>
-                        <li><img src="/static/images/cmake.png" alt="cmake logo" class="icon"></li>
-                        <li><img src="/static/images/git.png" alt="git logo" class="icon"></li>
-                        <li><img src="/static/images/docker.png" alt="docker logo" class="icon"></li>
-                        <li><img src="/static/images/mpi.png" alt="mpi logo" class="icon"></li>
-                    </ul>
-                </div>
+        <section id="about" class="about-me"">
+                <div class=" main">
+            <div class="about-me-text">
+                <p class="title">About Me</p>
+                <p class="description text">I am a Software Engineer with experience in the automotive, fintech, and
+                    high-performance computing (HPC)
+                    industries. I have worked on developing and maintaining software systems that enhance
+                    functionality
+                    and
+                    efficiency. Additionally, I have some background in computer graphics, contributing to the
+                    creation
+                    of
+                    user interfaces and visual components.</p>
+            </div>
+            <img src="/static/images/portrait.svg" alt="my picture" class="image">
+            </div>
+            <div class="skills">
+                <p class="subtitle">Skills</p>
+                <ul class="list">
+                    <li><img src="/static/images/c++.svg" alt="c++ logo" class="icon"></li>
+                    <li><img src="/static/images/python.svg" alt="python logo" class="icon"></li>
+                    <li> <img src="/static/images/vulkan.svg" alt="vulkan logo" class="icon"></li>
+                    <li><img src="/static/images/cmake.svg" alt="cmake logo" class="icon"></li>
+                    <li><img src="/static/images/git.svg" alt="git logo" class="icon"></li>
+                    <li><img src="/static/images/docker.svg" alt="docker logo" class="icon"></li>
+                    <li><img src="/static/images/mpi.svg" alt="mpi logo" class="icon"></li>
+                </ul>
+            </div>
             </div>
         </section>
 
         <!-- Portfolio Section -->
-        <section id="portfolio">
+        <section id="portfolio" class="portfolio">
             <p class="title">Portfolio</p>
-            <div class="projects-container">
-                <!-- Add your project items here -->
+            <div class="project">
+                <img src="/static/images/looper.svg" alt="looper screenshot" class="image">
+                <div class="description right">
+                    <p class="subtitle">Looper</p>
+                    <p class="text">
+                        Looper is a game engine that includes an integrated editor and a 2D game environment complete
+                        with a
+                        level editor, all built with modern C++20. It uses Vulkan for efficient rendering and
+                        incorporates
+                        ImGui and GLFW3 to manage the user interface and handle window/input operations. Looper supports
+                        both Ubuntu and Windows platforms
+                    </p>
+                    <button class="button button-text">Read more</button>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="description left">
+                    <p class="subtitle">Shady</p>
+                    <p class="text">
+                        Shady is a 3D rendering engine built with C++20 and Vulkan for high-performance graphics. It
+                        utilizes ImGui for intuitive user interfaces and GLFW3 for window and input management.
+                        Compatible with both Ubuntu and Windows.
+                    </p>
+                    <button class="button button-text">Read more</button>
+                </div>
+                <img src="/static/images/shady.svg" alt="shady screenshot" class="image">
+            </div>
+
+            <div class="project">
+                <img src="/static/images/static-analysis.svg" alt="static-analysis screenshot" class="image">
+                <div class="description right">
+                    <p class="subtitle">Static Analysis</p>
+                    <p class="text">
+                        GitHub action designed for C++ projects that performs static analysis using cppcheck and
+                        clang-tidy. Depending on trigger type it produces either console output (for push) or PR
+                        comments (for pull request) with code snippets.
+                    </p>
+                    <button class="button button-text">Read more</button>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="description left">
+                    <p class="subtitle">Compile Result</p>
+                    <p class="text">
+                        Compile Result is a GitHub Action that analyzes build output for C/C++ applications and comments
+                        on pull requests with any detected issues, including relevant code snippets and descriptions.
+                    </p>
+                    <button class="button button-text">Read more</button>
+                </div>
+                <img src="/static/images/compile-result.svg" alt="compile-result screenshot" class="image">
             </div>
         </section>
 
@@ -173,38 +222,38 @@
             <p class="title">Get in Touch</p>
             <!-- Add contact form or information here -->
         </section>
-    </div>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; {{ current_year }} Jakub Domagała. All rights reserved.</p>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <p>&copy; {{ current_year }} Jakub Domagała. All rights reserved.</p>
+        </footer>
 
-    <!-- JavaScript for Active Nav Link Handling -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
+        <!-- JavaScript for Active Nav Link Handling -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('.nav-link');
 
-            window.addEventListener('scroll', () => {
-                let current = '';
+                window.addEventListener('scroll', () => {
+                    let current = '';
 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 80; // Adjust offset as needed
-                    if (pageYOffset >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop - 80; // Adjust offset as needed
+                        if (pageYOffset >= sectionTop) {
+                            current = section.getAttribute('id');
+                        }
+                    });
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').substring(1) === current) {
-                        link.classList.add('active');
-                    }
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href').substring(1) === current) {
+                            link.classList.add('active');
+                        }
+                    });
                 });
             });
-        });
-    </script>
+        </script>
 </body>
 
 </html>
