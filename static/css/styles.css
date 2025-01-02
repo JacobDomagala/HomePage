@@ -84,12 +84,6 @@ body {
     color: var(--hover-color)
 }
 
-/* Section Styles */
-section {
-    padding: 100px 0 20px 0; /* Top padding accounts for fixed navbar height */
-    min-height: 100vh; /* Ensures each section takes up full viewport height */
-}
-
 .title {
     font-family: var(--font-primary);
     font-size: 64px;
@@ -114,9 +108,8 @@ section {
     gap: 2px;
     justify-content: center;
     align-items: center;
-    opacity: 1;
     background-color: #ffffff;  
-    margin: 0 auto;
+    margin: 101px auto 204px auto;
 }
 
 .hello .greeting{
@@ -190,7 +183,7 @@ section {
     min-height: 611px;
     padding: 50px;
     gap: 32px;
-    border-radius: 14px 0px 0px 0px;
+    border-radius: 14px 14px 14px 14px;
     background-color: #f8f8f8;
     margin: 0 auto;
     display: flex;
