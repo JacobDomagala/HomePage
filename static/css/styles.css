@@ -351,3 +351,93 @@ section {
     height: 476px;
     border-radius: 14px;
 }
+
+.contact {
+    background-color: #F8F8F8;
+    border-radius: 14px;
+    padding: 50px;
+    margin-top: 140px;
+    display: flex;
+    flex-direction: row;
+}
+
+.contact .content {
+    width: 456px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.contact .form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact .submit-btn {
+    width: 188px;
+    height: 53px;
+    border-radius: 7px;
+    border: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 14px 24px;
+    background-color: var(--primary-color);
+
+    color: var(--background-color);
+}
+
+.contact .submit-btn:hover {
+    background-color: var(--hover-color);
+    border-color: var(--hover-color);
+}
+
+.contact input,
+.contact textarea {
+    width: 456px;
+    padding: 10px;
+    gap: 10px;
+    border: 1px solid #000;
+    border-radius: 7px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: var(--input-focus-border);
+    outline: none;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: none;
+    /* Hidden by default */
+}
+
+.form-messages {
+    margin-top: 20px;
+    font-size: 1rem;
+    display: none;
+    /* Hidden by default */
+}
+
+.form-messages.success {
+    color: var(--success-color);
+}
+
+.form-messages.error {
+    color: var(--error-color);
+}
+
+
+.footer {
+    height: 68px;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+
+    align-content: center;
+}
