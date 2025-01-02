@@ -1,25 +1,60 @@
 # app.py
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail as SendGridMail
+from email_validator import validate_email, EmailNotValidError
 
 app = Flask(__name__)
 
-# Home Route - About Me Section
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
 
-# Project Detail Route
-@app.route('/projects/<int:project_id>')
-def project_detail(project_id):
-    # In a real application, fetch project details from a database
-    project = {
-        'id': project_id,
-        'title': f'Project {project_id}',
-        'description': f'Detailed description for Project {project_id}.',
-        'image': f'project{project_id}.jpg',
-        'link': 'https://github.com/yourusername/project{}'.format(project_id)
-    }
-    return render_template('project_detail.html', project=project)
+@app.route('/handle_contact', methods=['POST'])
+def handle_contact():
+    data = request.get_json()
+    email = data.get('email')
+    message_content = data.get('message')
+
+    errors = {}
+
+    # Basic validation
+    if not email:
+        errors['email'] = "Email is required."
+    else:
+        # Validate email format
+        try:
+            valid = validate_email(email)
+            email = valid.email
+        except EmailNotValidError as e:
+            errors['email'] = str(e)
+
+    if not message_content:
+        errors['message'] = "Message is required."
+
+    print(f"Errors: {errors}")
+    if errors:
+        return jsonify({'errors': errors}), 400
+
+    # Compose the email using SendGrid
+    sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+    sg_mail = SendGridMail(
+        from_email='contact@yourdomain.com',  # Use a verified sender email
+        to_emails=os.getenv('MAIL_RECIPIENT'),
+        subject="New Contact Form Submission",
+        plain_text_content=f"From: {email}\n\nMessage:\n{message_content}"
+    )
+
+    try:
+        response = sg.send(sg_mail)
+        if response.status_code in [200, 202]:
+            return jsonify({'success': "Your message has been sent successfully!"}), 200
+        else:
+            return jsonify({'errors': {'general': "Failed to send your message. Please try again later."}}), 500
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({'errors': {'general': "An error occurred while sending your message. Please try again later."}}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
