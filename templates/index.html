@@ -160,13 +160,13 @@
                     novalidate>
                     <div class="form">
                         <label for="email">Email</label>
-                        <input class="input-field" type="email" id="email" name="email" required>
+                        <input class="input-field text" type="email" id="email" name="email" required>
                         <small class="error-message" id="email-error"></small>
                     </div>
 
                     <div class="form">
                         <label for="message">Message</label>
-                        <textarea class="input-field" id="message" name="message" rows="5" required></textarea>
+                        <textarea class="input-field text" id="message" name="message" rows="5" required></textarea>
                         <small class="error-message" id="message-error"></small>
                     </div>
                     <button class="submit-btn button-text" type="submit">
@@ -200,6 +200,24 @@
             const emailError = document.getElementById('email-error');
             const messageError = document.getElementById('message-error');
 
+            emailInput.addEventListener('focusout', function (event) {
+                // Timeout ensures that document.activeElement is updated
+                setTimeout(function () {
+                    if (!form.contains(document.activeElement)) {
+                        clientSideEmailValidate();
+                    }
+                }, 0);
+            });
+
+            messageInput.addEventListener('focusout', function (event) {
+                // Timeout ensures that document.activeElement is updated
+                setTimeout(function () {
+                    if (!form.contains(document.activeElement)) {
+                        clientSideTextValidate();
+                    }
+                }, 0);
+            });
+
             form.addEventListener('submit', function (e) {
                 e.preventDefault(); // Prevent the default form submission
                 console.log("Form submit event triggered"); // Debugging
@@ -210,35 +228,12 @@
                 emailInput.classList.remove('input-error');
                 messageInput.classList.remove('input-error');
 
-                // Gather form data
-                const formData = {
-                    email: emailInput.value.trim(),
-                    message: messageInput.value.trim()
-                };
-
-                console.log("Form Data:", formData); // Debugging
-
                 // Client-side validation
-                let hasError = false;
-                if (!formData.email) {
-                    emailError.innerText = 'Email is required.';
-                    emailInput.classList.add('input-error');
-                    hasError = true;
-                } else if (!validateEmail(formData.email)) {
-                    emailError.innerText = 'Please enter a valid email address.';
-                    emailInput.classList.add('input-error');
-                    hasError = true;
-                }
-
-                if (!formData.message) {
-                    messageError.innerText = 'Message is required.';
-                    messageInput.classList.add('input-error');
-                    hasError = true;
-                }
+                let hasError = clientSideValidate();
 
                 if (hasError) {
                     return; // Exit if there are validation errors
-                    console.log("Error:");
+                    console.log("Client side validation error:");
                 }
 
                 // Send the form data using Fetch API
@@ -290,6 +285,45 @@
                 // Simple email regex pattern
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(email.toLowerCase());
+            }
+
+            function clientSideValidate() {
+                const emailError = clientSideEmailValidate();
+                const textError = clientSideTextValidate();
+                
+                return  emailError || textError;
+            }
+
+            function clientSideEmailValidate() {
+                const email = emailInput.value.trim();
+
+
+                let hasError = false;
+                if (!email) {
+                    emailError.innerText = 'Email is required.';
+                    emailInput.classList.add('input-error');
+                    hasError = true;
+                } else if (!validateEmail(email)) {
+                    emailError.innerText = 'Please enter a valid email address.';
+                    emailInput.classList.add('input-error');
+                    hasError = true;
+                }
+
+                return hasError;
+            }
+
+            function clientSideTextValidate() {
+
+                const message = messageInput.value.trim();
+
+                let hasError = false;
+                if (!message) {
+                    messageError.innerText = 'Message is required.';
+                    messageInput.classList.add('input-error');
+                    hasError = true;
+                }
+
+                return hasError;
             }
         });
     </script>

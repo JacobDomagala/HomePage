@@ -337,6 +337,7 @@ body {
     width: 456px;
     height: 476px;
     border-radius: 14px;
+    box-shadow: 4px 14px 32px 0px #0707070d;
 }
 
 .contact {
@@ -349,7 +350,6 @@ body {
     display: flex;
     flex-direction: row;
     gap: 92px;
-    
 }
 
 .contact .content {
@@ -392,6 +392,7 @@ body {
 }
 .contact-form input,
 .contact-form textarea {
+    font-family: var(--font-primary);
     max-width: 456px;
     padding: 10px;
     gap: 10px;
