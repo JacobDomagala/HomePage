@@ -261,7 +261,6 @@
                     .then(data => {
                         console.log("Response Data:", data); // Debugging
                         if (data.success) {
-                            form.reset(); // Reset the form fields
                             document.getElementById('contact-form').innerHTML = "<p class=\"title\">Thank you!</p><p class=\"text\">Your message has been sent. I’ll get back to you as soon as possible.</p>";
                         } else if (data.errors) {
                             // Display server-side validation errors
