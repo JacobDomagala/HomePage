@@ -149,7 +149,7 @@
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
-            <div class="content">
+            <div class="content" id="contact-form">
                 <p class="title">Get in Touch</p>
                 <p class="text">
                     Have any questions or interested in working together? Fill out the form, and I will get back to you
@@ -236,6 +236,10 @@
                     console.log("Client side validation error:");
                 }
 
+                const formData = {
+                    email: emailInput.value.trim(),
+                    message: messageInput.value.trim()
+                };
                 // Send the form data using Fetch API
                 fetch('/handle_contact', { // Using hard-coded action
                     method: 'POST',
@@ -258,6 +262,7 @@
                         console.log("Response Data:", data); // Debugging
                         if (data.success) {
                             form.reset(); // Reset the form fields
+                            document.getElementById('contact-form').innerHTML = "<p class=\"title\">Thank you!</p><p class=\"text\">Your message has been sent. I’ll get back to you as soon as possible.</p>";
                         } else if (data.errors) {
                             // Display server-side validation errors
                             if (data.errors.email) {
@@ -290,8 +295,8 @@
             function clientSideValidate() {
                 const emailError = clientSideEmailValidate();
                 const textError = clientSideTextValidate();
-                
-                return  emailError || textError;
+
+                return emailError || textError;
             }
 
             function clientSideEmailValidate() {
