@@ -21,6 +21,7 @@
     --shadow-color: rgba(7, 7, 7, 0.05);
     --toggle-track-color: #D5DDEA;
     --toggle-thumb-color: #ffffff;
+    --toggle-icon: url("../images/moon.svg");
     --illustration-filter: none;
     --footer-background: #111C32;
     --footer-text-color: #ffffff;
@@ -48,6 +49,7 @@ html[data-theme="dark"] {
     --shadow-color: rgba(0, 0, 0, 0.35);
     --toggle-track-color: #284264;
     --toggle-thumb-color: #F5F7FB;
+    --toggle-icon: url("../images/sun.svg");
     --illustration-filter: brightness(0.92) contrast(1.04);
     --footer-background: #08101B;
     --footer-text-color: #F5F7FB;
@@ -151,8 +153,10 @@ body {
     justify-self: end;
     display: inline-flex;
     align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
+    justify-content: center;
+    width: 64px;
+    height: 44px;
+    padding: 0;
     border-radius: 999px;
     border: 1px solid var(--border-color);
     background-color: var(--background-color);
@@ -200,6 +204,10 @@ body {
     height: 20px;
     border-radius: 50%;
     background-color: var(--toggle-thumb-color);
+    background-image: var(--toggle-icon);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 14px 14px;
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 

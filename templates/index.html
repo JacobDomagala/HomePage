@@ -58,7 +58,6 @@
             <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false"
                 aria-label="Switch to dark mode">
                 <span class="theme-toggle-switch" aria-hidden="true"></span>
-                <span class="theme-toggle-label" id="theme-toggle-label">Dark mode</span>
             </button>
         </div>
     </nav>
@@ -221,7 +220,6 @@
             const storageKey = 'theme';
             const prefersDarkScheme = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
             const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleLabel = document.getElementById('theme-toggle-label');
             const form = document.getElementById('contact-form');
             const emailInput = document.getElementById('email');
             const messageInput = document.getElementById('message');
@@ -250,7 +248,6 @@
                 document.documentElement.setAttribute('data-theme', theme);
                 themeToggle.setAttribute('aria-pressed', String(isDark));
                 themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-                themeToggleLabel.innerText = isDark ? 'Light mode' : 'Dark mode';
             }
 
             applyTheme(getStoredTheme() || (prefersDarkScheme && prefersDarkScheme.matches ? 'dark' : 'light'));
