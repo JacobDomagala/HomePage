@@ -27,6 +27,8 @@
     --footer-text-color: #ffffff;
     --font-primary: 'Outfit';
     --content-width: 1132px;
+    --theme-transition-duration: 0.45s;
+    --theme-transition-easing: cubic-bezier(0.22, 1, 0.36, 1);
     color-scheme: light;
 }
 
@@ -67,7 +69,40 @@ body {
     font-family: var(--font-primary);
     background-color: var(--background-color);
     color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        color var(--theme-transition-duration) var(--theme-transition-easing);
+}
+
+body,
+.navbar,
+.nav-link,
+.theme-toggle,
+.theme-toggle-switch,
+.theme-toggle-switch::after,
+.title,
+.subtitle,
+.text,
+.button-text,
+.hello,
+.hello .greeting,
+.about-me,
+.contact,
+.portfolio .button,
+.contact .submit-btn,
+.contact-form input,
+.contact-form textarea,
+.portfolio .image,
+.footer,
+.socials .circle,
+.socials .circle .icon,
+.success-message,
+.error-message {
+    transition:
+        background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        color var(--theme-transition-duration) var(--theme-transition-easing),
+        border-color var(--theme-transition-duration) var(--theme-transition-easing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+        filter var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 /* Container Styles */
@@ -166,8 +201,11 @@ body {
     font-weight: 600;
     line-height: 24px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
-        color 0.3s ease;
+    transition:
+        background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        border-color var(--theme-transition-duration) var(--theme-transition-easing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+        color var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 .theme-toggle:hover {
@@ -191,7 +229,7 @@ body {
     height: 28px;
     border-radius: 999px;
     background-color: var(--toggle-track-color);
-    transition: background-color 0.3s ease;
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-easing);
     flex-shrink: 0;
 }
 
@@ -208,7 +246,10 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: 14px 14px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    transition:
+        transform var(--theme-transition-duration) var(--theme-transition-easing),
+        background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        filter var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 html[data-theme="dark"] .theme-toggle-switch::after {
@@ -282,7 +323,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 .about-me .image,
 .contact .image {
     filter: var(--illustration-filter);
-    transition: filter 0.3s ease;
+    transition: filter var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
 .socials {
@@ -345,7 +386,9 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 .socials .circle .icon {
     color: var(--heading-color);
     /* Default icon color */
-    transition: transform 0.3s, color 0.3s;
+    transition:
+        transform 0.3s ease,
+        color var(--theme-transition-duration) var(--theme-transition-easing);
     /* Smooth transitions */
 }
 
@@ -621,5 +664,37 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 
     .container {
         padding-top: 150px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    .navbar,
+    .nav-link,
+    .theme-toggle,
+    .theme-toggle-switch,
+    .theme-toggle-switch::after,
+    .title,
+    .subtitle,
+    .text,
+    .button-text,
+    .hello,
+    .hello .greeting,
+    .hello .greeting img,
+    .about-me,
+    .about-me .image,
+    .contact,
+    .contact .image,
+    .portfolio .button,
+    .contact .submit-btn,
+    .contact-form input,
+    .contact-form textarea,
+    .portfolio .image,
+    .footer,
+    .socials .circle,
+    .socials .circle .icon,
+    .success-message,
+    .error-message {
+        transition: none;
     }
 }
