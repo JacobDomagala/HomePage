@@ -6,6 +6,23 @@
     <title>Jakub Domagała - Portfolio</title>
     <!-- Google Fonts Import -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        (function () {
+            const storageKey = 'theme';
+            let storedTheme = null;
+
+            try {
+                storedTheme = localStorage.getItem(storageKey);
+            } catch (error) {
+                storedTheme = null;
+            }
+
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <!-- Meta Tag for Responsiveness -->
@@ -15,28 +32,35 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <ul class="nav-menu">
-            <li>
-                <a href="#hello" class="nav-link">
-                    Hello!
-                </a>
-            </li>
-            <li>
-                <a href="#about" class="nav-link">
-                    About Me
-                </a>
-            </li>
-            <li>
-                <a href="#portfolio" class="nav-link">
-                    Portfolio
-                </a>
-            </li>
-            <li>
-                <a href="#contact" class="nav-link">
-                    Contact
-                </a>
-            </li>
-        </ul>
+        <div class="nav-content">
+            <ul class="nav-menu">
+                <li>
+                    <a href="#hello" class="nav-link">
+                        Hello!
+                    </a>
+                </li>
+                <li>
+                    <a href="#about" class="nav-link">
+                        About Me
+                    </a>
+                </li>
+                <li>
+                    <a href="#portfolio" class="nav-link">
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="nav-link">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false"
+                aria-label="Switch to dark mode">
+                <span class="theme-toggle-switch" aria-hidden="true"></span>
+                <span class="theme-toggle-label" id="theme-toggle-label">Dark mode</span>
+            </button>
+        </div>
     </nav>
 
     <!-- Main Container -->
@@ -194,11 +218,66 @@
     <!-- JavaScript for AJAX Submission -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const storageKey = 'theme';
+            const prefersDarkScheme = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleLabel = document.getElementById('theme-toggle-label');
             const form = document.getElementById('contact-form');
             const emailInput = document.getElementById('email');
             const messageInput = document.getElementById('message');
             const emailError = document.getElementById('email-error');
             const messageError = document.getElementById('message-error');
+
+            function getStoredTheme() {
+                try {
+                    return localStorage.getItem(storageKey);
+                } catch (error) {
+                    return null;
+                }
+            }
+
+            function storeTheme(theme) {
+                try {
+                    localStorage.setItem(storageKey, theme);
+                } catch (error) {
+                    return;
+                }
+            }
+
+            function applyTheme(theme) {
+                const isDark = theme === 'dark';
+
+                document.documentElement.setAttribute('data-theme', theme);
+                themeToggle.setAttribute('aria-pressed', String(isDark));
+                themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+                themeToggleLabel.innerText = isDark ? 'Light mode' : 'Dark mode';
+            }
+
+            applyTheme(getStoredTheme() || (prefersDarkScheme && prefersDarkScheme.matches ? 'dark' : 'light'));
+
+            themeToggle.addEventListener('click', function () {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+                storeTheme(nextTheme);
+                applyTheme(nextTheme);
+            });
+
+            if (prefersDarkScheme) {
+                const syncThemeWithSystem = function (event) {
+                    if (getStoredTheme()) {
+                        return;
+                    }
+
+                    applyTheme(event.matches ? 'dark' : 'light');
+                };
+
+                if (prefersDarkScheme.addEventListener) {
+                    prefersDarkScheme.addEventListener('change', syncThemeWithSystem);
+                } else if (prefersDarkScheme.addListener) {
+                    prefersDarkScheme.addListener(syncThemeWithSystem);
+                }
+            }
 
             emailInput.addEventListener('focusout', function (event) {
                 // Timeout ensures that document.activeElement is updated
