@@ -454,8 +454,8 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 }
 
 .about-me-link-icon {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
     display: block;
 }
@@ -574,7 +574,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     width: 456px;
     display: flex;
     flex-direction: column;
-    justify-content: center;      
+    justify-content: center;
     align-items: center;
     gap: 32px;
 }
@@ -640,7 +640,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 /* Error Message Styling */
 .error-message {
     color: var(--error-color);
-    
+
     font-family: Outfit;
     font-size: 15px;
     font-weight: 500;
