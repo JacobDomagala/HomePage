@@ -108,12 +108,10 @@ body,
 /* Container Styles */
 .container {
     max-width: 1440px;
-    /* Sets the maximum width */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    /* Centers the container */
     padding-top: 101px;
 }
 
@@ -130,9 +128,7 @@ body,
     align-items: center;
     align-self: center;
     justify-content: center;
-
     gap: 10px;
-
     transition: background-color 0.3s ease, padding 0.3s ease;
     z-index: 1000;
 }
@@ -163,19 +159,14 @@ body,
 /* Navigation Link Styles */
 .nav-link {
     font-family: var(--font-primary);
-    /* Ensure font is applied */
     font-size: 20px;
     font-weight: 700;
     line-height: 25.2px;
     text-align: center;
     text-decoration: none;
-    /* Remove default underline */
     position: relative;
-    /* For pseudo-elements if needed */
     color: var(--heading-color);
-    /* Example text color */
     display: block;
-    /* Ensures the link occupies the full width and height */
     opacity: 1;
 }
 
@@ -328,42 +319,23 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 
 .socials {
     list-style: none;
-    /* Removes default bullet points */
     padding-top: 32px;
     margin: 0;
-    /* Removes default margin */
-
     display: flex;
-    /* Enables Flexbox for horizontal alignment */
     gap: 16px;
-    /* Adds space between circles */
-
     justify-content: center;
-    /* Centers the circles horizontally within the container */
     align-items: center;
-    /* Centers the circles vertically within the container */
 }
 
 .socials .circle {
     width: 59px;
-    /* Width of the circle */
     height: 59px;
-    /* Height of the circle */
     border: 2px solid var(--heading-color);
-    /* Border color and thickness */
     border-radius: 50%;
-    /* Makes the <li> a circle */
     background-color: transparent;
-    /* Ensures the circle is not filled */
-
     display: flex;
-    /* Enables Flexbox */
     justify-content: center;
-    /* Centers the SVG horizontally */
     align-items: center;
-    /* Centers the SVG vertically */
-
-    /* Optional: Add hover effect */
     transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -374,7 +346,6 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 
 .socials .circle:hover {
     border-color: var(--hover-color);
-    /* Darker border on hover */
 }
 
 .socials .circle a:focus {
@@ -385,19 +356,15 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 /* SVG Icon Styling */
 .socials .circle .icon {
     color: var(--heading-color);
-    /* Default icon color */
     transition:
         transform 0.3s ease,
         color var(--theme-transition-duration) var(--theme-transition-easing);
-    /* Smooth transitions */
 }
 
 /* Change icon color on hover */
 .socials .circle:hover .icon {
     color: var(--hover-color);
-    /* Changes SVG color on hover */
     transform: scale(1.1);
-    /* Slightly enlarge the icon on hover */
 }
 
 .about-me {
@@ -500,17 +467,13 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     width: auto;
 }
 
-
 .portfolio {
     width: 1132px;
     display: flex;
     flex-direction: column;
-
     margin-top: 140px;
-
     padding: 50px;
     gap: 32px;
-
     scroll-margin-top: 140px;
 }
 
@@ -527,7 +490,6 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     border-radius: 7px;
     border: 0px;
     background-color: var(--button-background);
-
     color: var(--button-text-color);
 }
 
@@ -539,7 +501,6 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 .portfolio .description {
     display: flex;
     flex-direction: column;
-
     gap: 32px;
 }
 
@@ -595,7 +556,6 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     gap: 8px;
     padding: 14px 24px;
     background-color: var(--button-background);
-
     color: var(--button-text-color);
 }
 
@@ -604,12 +564,13 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     border-color: var(--button-hover-background);
 }
 
-.contact-form{
+.contact-form {
     width: 456px;
     display: flex;
     flex-direction: column;
     gap: 32px;
 }
+
 .contact-form input,
 .contact-form textarea {
     font-family: var(--font-primary);
@@ -640,7 +601,6 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 /* Error Message Styling */
 .error-message {
     color: var(--error-color);
-
     font-family: Outfit;
     font-size: 15px;
     font-weight: 500;
@@ -648,13 +608,12 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-
 }
 
 /* Input Field Error Styling */
 .contact-form input.input-error,
 .contact-form textarea.input-error {
-    border: 2px solid var(--error-color); /* Override border with error color */
+    border: 2px solid var(--error-color);
 }
 
 /* Optional: Smooth transition for border color */
@@ -671,42 +630,359 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     height: 68px;
     background-color: var(--footer-background);
     color: var(--footer-text-color);
-
     align-content: center;
     text-align: center;
     size: 20px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1180px) {
+    .container {
+        width: 100%;
+        padding: 150px 20px 0;
+        align-items: stretch;
+    }
+
     .nav-content {
-        grid-template-columns: 1fr;
-        justify-items: center;
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr) auto;
         gap: 16px;
-        padding: 12px 24px;
+        padding: 12px 20px;
     }
 
     .navbar {
         height: auto;
-        padding: 12px 0;
-    }
-
-    .nav-menu,
-    .theme-toggle {
-        grid-column: 1;
+        padding: 8px 0;
     }
 
     .nav-menu {
+        grid-column: 1;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 16px 32px;
+        gap: 16px 24px;
+        min-width: 0;
     }
 
     .theme-toggle {
-        justify-self: center;
+        grid-column: 2;
+        justify-self: end;
     }
 
+    .hello {
+        scroll-margin-top: 220px;
+    }
+
+    .about-me,
+    .portfolio,
+    .contact {
+        width: 100%;
+    }
+
+    .about-me,
+    .portfolio,
+    .contact,
+    #hello {
+        scroll-margin-top: 220px;
+    }
+
+    .about-me .main {
+        align-items: center;
+    }
+
+    .about-me .description {
+        width: min(100%, 456px);
+        height: auto;
+    }
+
+    .about-me .skills .list {
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .about-me .image {
+        max-width: 100%;
+        height: auto;
+        position: static;
+        margin-left: auto;
+        transform: rotate(-16.05deg);
+    }
+
+    .portfolio .project {
+        width: 100%;
+        height: auto;
+        align-items: center;
+    }
+
+    .portfolio .description {
+        flex: 1 1 0;
+        min-width: 0;
+        gap: 24px;
+    }
+
+    .portfolio .right {
+        margin: auto 0px auto 48px;
+    }
+
+    .portfolio .left {
+        margin: auto 48px auto 0px;
+    }
+
+    .portfolio .image {
+        width: min(38vw, 456px);
+        max-width: 100%;
+        height: auto;
+    }
+
+    .contact {
+        gap: 48px;
+    }
+
+    .contact .image {
+        width: min(38vw, 484px);
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 900px) {
     .container {
-        padding-top: 150px;
+        padding: 168px 18px 0;
+    }
+
+    .about-me,
+    .portfolio,
+    .contact {
+        padding: 36px;
+    }
+
+    .about-me {
+        min-height: 0;
+    }
+
+    .about-me .main {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .about-me .description {
+        width: 100%;
+        max-width: none;
+    }
+
+    .about-me .image {
+        margin: 0 auto;
+    }
+
+    .portfolio {
+        gap: 48px;
+    }
+
+    .portfolio .project,
+    .portfolio .project:nth-child(even) {
+        flex-direction: column;
+        gap: 28px;
+    }
+
+    .portfolio .right,
+    .portfolio .left {
+        margin: 0;
+    }
+
+    .portfolio .image {
+        width: 100%;
+        max-width: 456px;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .contact .content {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        max-width: none;
+    }
+
+    .contact .image {
+        width: min(100%, 420px);
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        padding: 160px 16px 0;
+    }
+
+    .nav-content {
+        gap: 10px;
+        padding: 10px 16px;
+    }
+
+    .nav-menu {
+        gap: 14px 24px;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        line-height: 1.3;
+        padding-block: 2px;
+    }
+
+    .theme-toggle {
+        width: 60px;
+        height: 40px;
+    }
+
+    .theme-toggle-switch {
+        width: 44px;
+        height: 24px;
+    }
+
+    .theme-toggle-switch::after {
+        width: 16px;
+        height: 16px;
+        background-size: 12px 12px;
+    }
+
+    .title {
+        font-size: 48px;
+        line-height: 56px;
+    }
+
+    .subtitle {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .text {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    .hello {
+        margin: 72px auto 120px auto;
+    }
+
+    .hello .greeting {
+        font-size: 28px;
+        line-height: 42px;
+    }
+
+    .hello .greeting img {
+        width: 32px;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    .socials {
+        flex-wrap: wrap;
+    }
+
+    .about-me,
+    .portfolio,
+    .contact {
+        padding: 28px 24px;
+    }
+
+    .portfolio {
+        margin-top: 96px;
+    }
+
+    .contact {
+        margin-top: 96px;
+        margin-bottom: 72px;
+    }
+
+    .contact .submit-btn {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer {
+        height: auto;
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 152px 14px 0;
+    }
+
+    .nav-content {
+        gap: 8px;
+        padding: 10px 14px;
+    }
+
+    .nav-menu {
+        gap: 12px 18px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .theme-toggle {
+        width: 56px;
+        height: 36px;
+    }
+
+    .theme-toggle-switch {
+        width: 40px;
+        height: 22px;
+    }
+
+    .theme-toggle-switch::after {
+        top: 3px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+    }
+
+    html[data-theme="dark"] .theme-toggle-switch::after {
+        transform: translateX(18px);
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .subtitle {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .hello {
+        margin: 56px auto 96px auto;
+    }
+
+    .hello .greeting {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .about-me,
+    .portfolio,
+    .contact {
+        padding: 24px 20px;
     }
 }
 
