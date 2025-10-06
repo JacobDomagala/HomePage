@@ -781,6 +781,11 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     .portfolio .project:nth-child(even) {
         flex-direction: column;
         gap: 28px;
+        align-items: flex-start;
+    }
+
+    .portfolio .description {
+        display: contents;
     }
 
     .portfolio .right,
@@ -788,9 +793,26 @@ html[data-theme="dark"] .theme-toggle-switch::after {
         margin: 0;
     }
 
+    .portfolio .project .subtitle {
+        order: 1;
+        width: 100%;
+    }
+
     .portfolio .image {
+        order: 2;
         width: 100%;
         max-width: 456px;
+        align-self: center;
+    }
+
+    .portfolio .project .text {
+        order: 3;
+        width: 100%;
+    }
+
+    .portfolio .project .button {
+        order: 4;
+        align-self: flex-start;
     }
 
     .contact {
