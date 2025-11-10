@@ -22,6 +22,13 @@
     --toggle-track-color: #D5DDEA;
     --toggle-thumb-color: #ffffff;
     --toggle-icon: url("../images/moon.svg");
+    --img-cpp: url("../images/c++.svg");
+    --img-python: url("../images/python.svg");
+    --img-vulkan: url("../images/vulkan.svg");
+    --img-cmake: url("../images/cmake.svg");
+    --img-nvidia: url("../images/nvidia-logo-vert-blk.svg");
+    --img-docker: url("../images/docker.svg");
+    --img-mpi: url("../images/mpi.svg");
     --illustration-filter: none;
     --footer-background: #111C32;
     --footer-text-color: #ffffff;
@@ -52,6 +59,7 @@ html[data-theme="dark"] {
     --toggle-track-color: #284264;
     --toggle-thumb-color: #F5F7FB;
     --toggle-icon: url("../images/sun.svg");
+    --img-nvidia: url("../images/nvidia-logo-vert-wht.svg");
     --illustration-filter: brightness(0.92) contrast(1.04);
     --footer-background: #08101B;
     --footer-text-color: #F5F7FB;
@@ -466,6 +474,14 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     height: 80px;
     width: auto;
 }
+
+.icon-cpp { content: var(--img-cpp); }
+.icon-python { content: var(--img-python); }
+.icon-vulkan { content: var(--img-vulkan); }
+.icon-cmake { content: var(--img-cmake); }
+.icon-nvidia { content: var(--img-nvidia); }
+.icon-docker { content: var(--img-docker); }
+.icon-mpi { content: var(--img-mpi); }
 
 .portfolio {
     width: 1132px;
