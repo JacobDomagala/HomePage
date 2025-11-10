@@ -508,10 +508,23 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     justify-content: center;
     border-radius: 7px;
     border: 0px;
+    gap: 8px;
     background-color: var(--button-background);
     color: var(--button-text-color);
     text-decoration: none;
     cursor: pointer;
+}
+
+.portfolio .button::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    background-color: var(--button-text-color);
+
+    -webkit-mask: url("../images/square-arrow-out-up-right.svg") no-repeat center / contain;
+    mask: url("../images/square-arrow-out-up-right.svg") no-repeat center / contain;
 }
 
 .portfolio .button:hover {
