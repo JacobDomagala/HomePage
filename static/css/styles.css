@@ -563,6 +563,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     display: flex;
     flex-direction: row;
     gap: 92px;
+    scroll-margin-top: 220px;
 }
 
 .contact .content {
