@@ -550,6 +550,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     width: 456px;
     height: 476px;
     border-radius: 14px;
+    object-fit: cover;
     box-shadow: 4px 14px 32px 0px var(--shadow-color);
 }
 
