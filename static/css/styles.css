@@ -429,6 +429,49 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     height: 216px;
 }
 
+.about-me-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.about-me-link {
+    width: 52px;
+    height: 52px;
+    border: 2px solid var(--heading-color);
+    border-radius: 14px;
+    background-color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 24px var(--shadow-color);
+    transition:
+        border-color var(--theme-transition-duration) var(--theme-transition-easing),
+        background-color var(--theme-transition-duration) var(--theme-transition-easing),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+        transform var(--theme-transition-duration) var(--theme-transition-easing);
+}
+
+.about-me-link-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+}
+
+.about-me-link:hover {
+    border-color: var(--hover-color);
+    background-color: #ffffff;
+    box-shadow: 0 14px 30px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.about-me-link:focus-visible {
+    outline: 2px dashed var(--heading-color);
+    outline-offset: 4px;
+}
+
 .about-me .skills {
     display: flex;
     flex-direction: column;
@@ -531,7 +574,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     width: 456px;
     display: flex;
     flex-direction: column;
-    justify-content: center;      
+    justify-content: center;
     align-items: center;
     gap: 32px;
 }
@@ -597,7 +640,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 /* Error Message Styling */
 .error-message {
     color: var(--error-color);
-    
+
     font-family: Outfit;
     font-size: 15px;
     font-weight: 500;
@@ -693,6 +736,7 @@ html[data-theme="dark"] .theme-toggle-switch::after {
     .footer,
     .socials .circle,
     .socials .circle .icon,
+    .about-me-link,
     .success-message,
     .error-message {
         transition: none;
