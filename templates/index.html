@@ -142,7 +142,8 @@
                         ImGui and GLFW3 to manage the user interface and handle window/input operations. Looper supports
                         both Ubuntu and Windows platforms
                     </p>
-                    <button id="looper-button" class="button button-text">Read more</button>
+                    <a href="https://github.com/JacobDomagala/Looper" class="button button-text" target="_blank"
+                        rel="noopener noreferrer">Read more</a>
                 </div>
             </div>
 
@@ -154,7 +155,8 @@
                         utilizes ImGui for intuitive user interfaces and GLFW3 for window and input management.
                         Compatible with both Ubuntu and Windows.
                     </p>
-                    <button id="shady-button" class="button button-text">Read more</button>
+                    <a href="https://github.com/JacobDomagala/Shady" class="button button-text" target="_blank"
+                        rel="noopener noreferrer">Read more</a>
                 </div>
                 <img src="/static/images/shady.png" alt="shady screenshot" class="image">
             </div>
@@ -168,7 +170,8 @@
                         clang-tidy. Depending on trigger type it produces either console output (for push) or PR
                         comments (for pull request) with code snippets.
                     </p>
-                    <button id="static-analysis-button" class="button button-text">Read more</button>
+                    <a href="https://github.com/JacobDomagala/StaticAnalysis" class="button button-text"
+                        target="_blank" rel="noopener noreferrer">Read more</a>
                 </div>
             </div>
 
@@ -179,7 +182,8 @@
                         Compile Result is a GitHub Action that analyzes build output for C/C++ applications and comments
                         on pull requests with any detected issues, including relevant code snippets and descriptions.
                     </p>
-                    <button id="compile-button" class="button button-text">Read more</button>
+                    <a href="https://github.com/JacobDomagala/CompileResult" class="button button-text" target="_blank"
+                        rel="noopener noreferrer">Read more</a>
                 </div>
                 <img src="/static/images/compile-result.png" alt="compile-result screenshot" class="image">
             </div>
@@ -297,19 +301,6 @@
                         clientSideEmailValidate();
                     }
                 }, 0);
-            });
-
-            document.getElementById("shady-button").addEventListener("click", function () {
-                window.location.href = "https://github.com/JacobDomagala/Shady";
-            });
-            document.getElementById("looper-button").addEventListener("click", function () {
-                window.location.href = "https://github.com/JacobDomagala/Looper";
-            });
-            document.getElementById("static-analysis-button").addEventListener("click", function () {
-                window.location.href = "https://github.com/JacobDomagala/StaticAnalysis";
-            });
-            document.getElementById("compile-button").addEventListener("click", function () {
-                window.location.href = "https://github.com/JacobDomagala/CompileResult";
             });
 
             messageInput.addEventListener('focusout', function (event) {
