@@ -487,10 +487,15 @@ html[data-theme="dark"] .theme-toggle-switch::after {
 .portfolio .button {
     width: 131px;
     height: 53px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 7px;
     border: 0px;
     background-color: var(--button-background);
     color: var(--button-text-color);
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .portfolio .button:hover {
