@@ -38,8 +38,8 @@ def handle_contact():
     try:
         resend.api_key = os.getenv('RESEND_API_KEY')
         resend.Emails.send({
-            "from": os.getenv('MAIL_RECIPIENT'),
-            "to": [os.getenv('MAIL_ADDRESS')],
+            "from": os.getenv('MAIL_ADDRESS'),
+            "to": [os.getenv('MAIL_RECIPIENT')],
             "subject": "New Contact Form Submission",
             "text": f"From: {email}\n\nMessage:\n{message_content}",
         })
