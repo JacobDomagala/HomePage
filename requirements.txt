@@ -1,4 +1,4 @@
 Flask
 gunicorn
-sendgrid
+resend
 email_validator
